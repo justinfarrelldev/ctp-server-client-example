@@ -5,6 +5,10 @@ OUT = dist/ctp_client_example
 
 all:
 	mkdir -p dist
+	make tidy
+	make build
+
+build:
 	$(CC) $(CFLAGS) $(SRC) -o $(OUT)
 
 tidy:
