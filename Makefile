@@ -1,11 +1,11 @@
 CC = clang
-CFLAGS = -std=c11 -Wall -Wextra -Werror -pedantic
+CFLAGS = -std=c11 -Wall -Wextra -Werror -pedantic $(shell pkg-config --cflags gtk+-3.0)
 SRC = main.c
 OUT = dist/ctp_client_example
 
 deps:
 	sudo apt-get update
-	sudo apt-get install -y clang clang-tidy make
+	sudo apt-get install -y clang clang-tidy make libgtk-3-dev pkg-config
 
 all:
 	mkdir -p dist
@@ -13,7 +13,7 @@ all:
 	make build
 
 build:
-	$(CC) $(CFLAGS) $(SRC) -o $(OUT)
+	$(CC) $(CFLAGS) $(SRC) -o $(OUT) $(shell pkg-config --libs gtk+-3.0)
 
 tidy:
 	clang-tidy $(SRC) -- -std=c11 $(CFLAGS)

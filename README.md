@@ -10,6 +10,8 @@ You will need:
 - clang
 - clang-tidy
 - make
+- pkg-config
+- GTK 3
 
 The project uses the C11 standard.
 
