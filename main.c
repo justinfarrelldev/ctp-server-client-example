@@ -22,6 +22,8 @@ void on_login_clicked(GtkWidget *widget, gpointer data) {
  * and `on_login_clicked`.
  */
 void create_buttons(GtkWidget *window) {
+  GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+  gtk_container_add(GTK_CONTAINER(window), box);
   GtkWidget *create_account_button =
       gtk_button_new_with_label("Create Account");
   GtkWidget *login_button = gtk_button_new_with_label("Login");
@@ -31,8 +33,8 @@ void create_buttons(GtkWidget *window) {
   g_signal_connect(login_button, "clicked", G_CALLBACK(on_login_clicked),
                    window);
 
-  gtk_container_add(GTK_CONTAINER(window), create_account_button);
-  gtk_container_add(GTK_CONTAINER(window), login_button);
+  gtk_container_add(GTK_CONTAINER(box), create_account_button);
+  gtk_container_add(GTK_CONTAINER(box), login_button);
 }
 
 /**
