@@ -13,15 +13,13 @@ void on_login_clicked(GtkWidget *widget, gpointer data) {
 }
 
 /**
- * @brief Activates the GTK application and creates the main window.
+ * create_buttons:
+ * @window: a pointer to the GtkWidget representing the main application window.
  *
- * This function is called when the GTK application is activated. It creates a
- * new application window, sets its title, and adjusts its default size to 25%
- * of the screen's width and height. Finally, it displays the window.
- *
- * @param app A pointer to the GtkApplication instance.
- * @param user_data A pointer to user data, which is cast to a char* and printed
- * to prevent clang-tidy errors.
+ * This function creates two buttons, "Create Account" and "Login", and adds
+ * them to the provided window. It also connects the "clicked" signal of each
+ * button to their respective callback functions, `on_create_account_clicked`
+ * and `on_login_clicked`.
  */
 void create_buttons(GtkWidget *window) {
   GtkWidget *create_account_button =
@@ -37,6 +35,17 @@ void create_buttons(GtkWidget *window) {
   gtk_container_add(GTK_CONTAINER(window), login_button);
 }
 
+/**
+ * @brief Activates the GTK application and creates the main window.
+ *
+ * This function is called when the GTK application is activated. It creates a
+ * new application window, sets its title, and adjusts its default size to 25%
+ * of the screen's width and height. Finally, it displays the window.
+ *
+ * @param app A pointer to the GtkApplication instance.
+ * @param user_data A pointer to user data, which is cast to a char* and printed
+ * to prevent clang-tidy errors.
+ */
 static void activate(GtkApplication *app, gpointer user_data) {
   GtkWidget *window = gtk_application_window_new(app);
   gtk_window_set_title(GTK_WINDOW(window), "Window");
