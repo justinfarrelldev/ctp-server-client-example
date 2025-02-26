@@ -1,6 +1,6 @@
 CC = clang
-CFLAGS = -std=c11 -Wall -Wextra -Werror -pedantic $(shell pkg-config --cflags gtk+-3.0)
-SRC = main.c
+CFLAGS = -std=c11 -Wall -Wextra -Werror -Wno-error=unused-parameter -pedantic $(shell pkg-config --cflags gtk+-3.0)
+SRC = $(shell find . -name '*.c')
 OUT = dist/ctp_client_example
 
 deps:

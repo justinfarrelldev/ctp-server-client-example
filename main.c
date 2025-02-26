@@ -1,10 +1,5 @@
 #include <gtk/gtk.h>
-
-void on_create_account_clicked(GtkWidget *widget, gpointer data) {
-  g_print("Create Account button clicked\n");
-  g_print("Widget pointer: %p\n", (void *)widget);
-  g_print("Data pointer: %p\n", (void *)data);
-}
+extern void on_create_account_clicked(GtkWidget *widget, gpointer data);
 
 void on_login_clicked(GtkWidget *widget, gpointer data) {
   g_print("Login button clicked\n");
