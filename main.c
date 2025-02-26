@@ -1,5 +1,17 @@
 #include <gtk/gtk.h>
 
+void on_create_account_clicked(GtkWidget *widget, gpointer data) {
+  g_print("Create Account button clicked\n");
+  g_print("Widget pointer: %p\n", (void *)widget);
+  g_print("Data pointer: %p\n", (void *)data);
+}
+
+void on_login_clicked(GtkWidget *widget, gpointer data) {
+  g_print("Login button clicked\n");
+  g_print("Widget pointer: %p\n", (void *)widget);
+  g_print("Data pointer: %p\n", (void *)data);
+}
+
 /**
  * @brief Activates the GTK application and creates the main window.
  *
@@ -22,6 +34,19 @@ static void activate(GtkApplication *app, gpointer user_data) {
   gint screen_height = workarea.height;
   gtk_window_set_default_size(GTK_WINDOW(window), screen_width * 0.25,
                               screen_height * 0.25);
+
+  GtkWidget *create_account_button =
+      gtk_button_new_with_label("Create Account");
+  GtkWidget *login_button = gtk_button_new_with_label("Login");
+
+  g_signal_connect(create_account_button, "clicked",
+                   G_CALLBACK(on_create_account_clicked), window);
+  g_signal_connect(login_button, "clicked", G_CALLBACK(on_login_clicked),
+                   window);
+
+  gtk_container_add(GTK_CONTAINER(window), create_account_button);
+  gtk_container_add(GTK_CONTAINER(window), login_button);
+
   gtk_widget_show_all(window);
   printf("%s",
          (char *)user_data); // This is here to prevent clang-tidy errors
