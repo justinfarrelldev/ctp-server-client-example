@@ -1,3 +1,4 @@
+#include "create_account.h"
 #include <gtk/gtk.h>
 
 void on_create_account_clicked(GtkWidget *widget, gpointer data) {
@@ -62,8 +63,19 @@ void on_create_account_clicked(GtkWidget *widget, gpointer data) {
   gtk_widget_show_all(dialog);
 
   gint result = gtk_dialog_run(GTK_DIALOG(dialog));
+
   if (result == GTK_RESPONSE_OK) {
     g_print("Create Account OK clicked\n");
+
+    const char *email = gtk_entry_get_text(GTK_ENTRY(email_entry));
+    const char *info = gtk_entry_get_text(GTK_ENTRY(info_entry));
+    const char *location = gtk_entry_get_text(GTK_ENTRY(location_entry));
+    const char *name = gtk_entry_get_text(GTK_ENTRY(name_entry));
+    const char *password = gtk_entry_get_text(GTK_ENTRY(password_entry));
+    int experience_level =
+        gtk_combo_box_get_active(GTK_COMBO_BOX(experience_combo));
+
+    create_account(email, experience_level, info, location, name, password);
   } else {
     g_print("Create Account Cancel clicked\n");
   }
