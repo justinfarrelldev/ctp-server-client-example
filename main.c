@@ -1,5 +1,16 @@
 #include <gtk/gtk.h>
 
+/**
+ * @brief Activates the GTK application and creates the main window.
+ *
+ * This function is called when the GTK application is activated. It creates a
+ * new application window, sets its title, and adjusts its default size to 25%
+ * of the screen's width and height. Finally, it displays the window.
+ *
+ * @param app A pointer to the GtkApplication instance.
+ * @param user_data A pointer to user data, which is cast to a char* and printed
+ * to prevent clang-tidy errors.
+ */
 static void activate(GtkApplication *app, gpointer user_data) {
   GtkWidget *window = gtk_application_window_new(app);
   gtk_window_set_title(GTK_WINDOW(window), "Window");
