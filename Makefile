@@ -1,11 +1,11 @@
 CC = clang
-CFLAGS = -std=c11 -Wall -Wextra -Werror -Wno-error=unused-parameter -pedantic $(shell pkg-config --cflags gtk+-3.0)
+CFLAGS = -std=c11 -Wall -Wextra -Werror -Wno-error=unused-parameter -pedantic $(shell pkg-config --cflags gtk+-3.0 libcurl)
 SRC = $(shell find . -name '*.c')
 OUT = dist/ctp_client_example
 
 deps:
 	sudo apt-get update
-	sudo apt-get install -y clang clang-tidy make libgtk-3-dev pkg-config
+	sudo apt-get install -y clang clang-tidy make libgtk-3-dev pkg-config libcurl4-openssl-dev
 
 all:
 	mkdir -p dist
