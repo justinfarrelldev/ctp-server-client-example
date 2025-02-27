@@ -1,35 +1,33 @@
 #include <gtk/gtk.h>
 extern void on_create_account_clicked(GtkWidget *widget, gpointer data);
 
-void on_login_clicked(GtkWidget *widget, gpointer data) {
-  g_print("Login button clicked\n");
-  g_print("Widget pointer: %p\n", (void *)widget);
-  g_print("Data pointer: %p\n", (void *)data);
-}
-
 /**
  * create_buttons:
  * @window: a pointer to the GtkWidget representing the main application window.
  *
- * This function creates two buttons, "Create Account" and "Login", and adds
- * them to the provided window. It also connects the "clicked" signal of each
- * button to their respective callback functions, `on_create_account_clicked`
- * and `on_login_clicked`.
+ * This function creates a "Create Account" button and a label with a message
+ * indicating that the login functionality is under development. It adds them
+ * to the provided window and connects the "clicked" signal of the button to
+ * its respective callback function, `on_create_account_clicked`.
  */
 void create_buttons(GtkWidget *window) {
   GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
   gtk_container_add(GTK_CONTAINER(window), box);
   GtkWidget *create_account_button =
       gtk_button_new_with_label("Create Account");
-  GtkWidget *login_button = gtk_button_new_with_label("Login");
+  GtkWidget *login_label = gtk_label_new(
+      "\n\n"
+      "The login functionality is currently under development. "
+      "Account creation is fully operational. \nThis example illustrates "
+      "how to interface with the server using C. \nLobbies, sessions, and "
+      "authentication logic are nearing completion, with the login endpoint "
+      "and session refreshing logic still in progress.");
 
   g_signal_connect(create_account_button, "clicked",
                    G_CALLBACK(on_create_account_clicked), window);
-  g_signal_connect(login_button, "clicked", G_CALLBACK(on_login_clicked),
-                   window);
 
   gtk_container_add(GTK_CONTAINER(box), create_account_button);
-  gtk_container_add(GTK_CONTAINER(box), login_button);
+  gtk_container_add(GTK_CONTAINER(box), login_label);
 }
 
 /**
