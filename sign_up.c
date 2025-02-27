@@ -1,6 +1,24 @@
 #include "create_account.h"
 #include <gtk/gtk.h>
 
+/**
+ * @brief Callback function for the "Create Account" button click event.
+ *
+ * This function is triggered when the "Create Account" button is clicked.
+ * It creates a dialog window with various input fields for the user to
+ * enter their account details, such as email, info, location, name,
+ * password, and experience level. The dialog has "OK" and "Cancel" buttons.
+ *
+ * If the "OK" button is clicked, the function retrieves the entered data
+ * and calls the `create_account` function with the provided details.
+ * If the "Cancel" button is clicked, the dialog is simply closed.
+ *
+ * @param widget The widget that triggered the event (the "Create Account"
+ * button).
+ * @param data User data passed to the callback function (expected to be a
+ * pointer to the parent window).
+ */
+
 void on_create_account_clicked(GtkWidget *widget, gpointer data) {
   GtkWidget *dialog, *content_area;
   GtkWidget *grid;

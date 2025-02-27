@@ -5,6 +5,23 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @brief Creates a new account by sending a POST request to the server.
+ *
+ * This function initializes a CURL session, constructs a JSON object with the
+ * provided account details, and sends a POST request to the specified server
+ * endpoint to create a new account.
+ *
+ * Note that the params below are all present within the Call to Power
+ * multiplayer user dialogs.
+ *
+ * @param email The email address of the new account.
+ * @param experience_level The experience level of the user.
+ * @param info Additional information about the user.
+ * @param location The location of the user.
+ * @param name The name of the user.
+ * @param password The password for the new account.
+ */
 void create_account(const char *email, int experience_level, const char *info,
                     const char *location, const char *name,
                     const char *password) {

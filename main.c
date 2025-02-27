@@ -59,6 +59,17 @@ static void activate(GtkApplication *app, gpointer user_data) {
   printf("%s", (char *)user_data); // This is here to prevent clang-tidy errors
 }
 
+/**
+ * @file main.c
+ * @brief Entry point for the GTK application.
+ *
+ * This file contains the main function which initializes and runs
+ * a GTK application.
+ *
+ * @param argc The number of command-line arguments.
+ * @param argv The array of command-line arguments.
+ * @return The status code of the application.
+ */
 int main(int argc, char **argv) {
   GtkApplication *app =
       gtk_application_new("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
